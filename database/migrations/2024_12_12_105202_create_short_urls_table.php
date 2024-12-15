@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('short_url');
-            $table->string('original_url');
+            $table->text('original_url');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ export default function Dashboard({totalRows,totalVisits}) {
                                 </div>
                                 <div className='py-2 px-4 bg-green-800 text-white rounded-lg h-28 sm:w-64 w-full flex flex-col justify-center'>
                                 <p className='text-center'>Total Visits </p>
-                                <p className='text-center'> {totalVisits} </p>
+                                <p className='text-center'> {totalVisits?totalVisits:0} </p>
                                      
                                 </div>
                             </div>

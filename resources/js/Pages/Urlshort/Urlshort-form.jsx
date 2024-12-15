@@ -30,9 +30,26 @@ export default function UrlShorter({ myurls,host_url }) {
                         showConfirmButton: false,
                         timer: 1000
                       })
-                    
                 }
-                if(resp.data.error){
+                
+            }).catch(function (error) {
+                const resp = error.response
+                if(resp.data.error && resp.data.short_url){
+                    Swal.fire({
+                        title: `<strong>${resp.data.error}</strong>`,
+                        icon: "info",
+                        html: `
+                        <p>Your short Link is:</p>
+                          ${resp.data.status?"<a class='text-blue-500' target='_blank' href='"+resp.data.short_url+"'>"+resp.data.short_url+"</a>":resp.data.short_url}
+                          <br><br>
+                          ${resp.data.status?"<span class='text-green-600'>Active</span>":"<span class='text-red-600'>Inactive</span>"}
+                        `,
+                        showConfirmButton: true,
+                        confirmButtonText: 'Close',
+                        confirmButtonColor: "#ff3905",
+                        
+                      });
+                }else if(resp.data.error){
                     Swal.fire({
                         title: 'error',
                         text: resp.data.error,
@@ -41,7 +58,7 @@ export default function UrlShorter({ myurls,host_url }) {
                         confirmButtonText: 'Ok'
                       })
                 }
-            })
+              });
         } else {
             
             setError('Please enter a valid URL starting with http or https.');
@@ -63,7 +80,6 @@ export default function UrlShorter({ myurls,host_url }) {
           } catch (error) {
             Swal.fire({
                 title: 'Error!',
-                text: error,
                 icon: 'error',
                 showConfirmButton: true,
                 confirmButtonText: 'Ok'
@@ -148,7 +164,7 @@ export default function UrlShorter({ myurls,host_url }) {
                 </div>
                 {/* Short Url List */}
                 <div className='border sm:mx-20 my-5'>
-                        <div className="container mx-auto p-4">
+                        <div className="container mx-auto p-4 overflow-x-auto">
                             <table className="min-w-full table-auto border-collapse">
                                 <thead>
                                     <tr>
