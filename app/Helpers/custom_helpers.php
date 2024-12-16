@@ -16,21 +16,24 @@ use App\Models\ShortUrl;
 // }
 
 
-function get_short_url($counter = 0, $maxCalls = 1000)
+function get_short_url($counter = 0, $maxCalls = 1000,$length = 5)
 {
     // Base case: Stop recursion after $maxCalls iterations
     if ($counter >= $maxCalls) {
         throw new Exception("Not Generated Unique short link. Reached maximum recursion limit of {$maxCalls} try again.");
     }
+   
+    if($counter%100 == 0){
+        $length += 1;
+    }
     // Generate a short URL
-    $short_code = Str::random(6);
-    // $short_code = '6444d1';
-
+    $short_code = Str::random($length);
+    
     // Check if the short URL exists in the database
     if (!ShortUrl::where('short_url', $short_code)->exists()) {
         return $short_code;
     } else {
         // Recursive call with incremented counter
-        return get_short_url($counter + 1, $maxCalls);
+        return get_short_url($counter + 1, $maxCalls, $length);
     }
 }
