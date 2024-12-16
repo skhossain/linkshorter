@@ -169,9 +169,9 @@ export default function UrlShorter({ myurls,host_url }) {
                                 <thead>
                                     <tr>
                                         <th className="px-4 py-2 border-b text-left">SL</th>
-                                        <th className="px-4 py-2 border-b text-left w-">URL</th>
+                                        <th className="px-4 py-2 border-b text-left">URL</th>
                                         <th>Visits</th>
-                                        <th className="px-4 py-2 border-b text-left">Action</th>
+                                        <th className="px-4 py-2 border-b">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -179,15 +179,15 @@ export default function UrlShorter({ myurls,host_url }) {
                                         <tr key={url.id} className='odd:bg-blue-100'>
                                             <td className="px-4 py-2 border-b">{(urls.current_page*urls.per_page - urls.per_page) + index+1}</td>
                                             <td className="px-4 py-2 border-b">
-                                                <div className='flex flex-col space-y-2'>
-                                                    <div className='flex space-x-2'><span className='w-24'>Original</span><span>{url.original_url}</span></div>
+                                                <div className='flex flex-col space-y-1'>
+                                                    <div className='flex space-x-2'><span className='w-24'>Original</span><div className='w-64 sm:min-w-[600px] sm:max-w-[700px] max-h-12 overflow-hidden'>{url.original_url}</div></div>
                                                     <div className='flex space-x-2'><span className='w-24'>Short</span><a href={`${host_url}/${url.short_url}`} target='_blank' className='text-blue-500'>{host_url}/{url.short_url}</a></div>
                                                 </div>
                                             </td>
                                             <td className='text-center'>{url.visit_count}</td>
                                             
                                             <td className="px-4 py-2 border-b">
-                                                <div className='flex space-x-2'>
+                                                <div className='flex justify-center space-x-2'>
                                                     <a href={`${host_url}/${url.short_url}`} target='_blank' className='px-2 py-1 bg-sky-800 text-white rounded'>Visit</a>
                                                     <button onClick={() => handleCopy(`${host_url}/${url.short_url}`)} className='px-2 py-1 bg-green-800 text-white rounded'>Copy</button>
                                                     <input type='checkbox' className='my-2' checked={url.status} onChange={()=> handleStatusChange(!url.status, url)} />
