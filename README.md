@@ -55,12 +55,13 @@ php artisan migrate
 ```
 
 ### 6. Run the Application
-Start the Laravel development server:
-```bash
-php artisan serve
-```
 Compile front-end assets:
 ```bash
 npm run dev
 ```
+Start the Laravel development server:
+```bash
+php artisan serve
+```
+
 Access the application at http://localhost:8000.
