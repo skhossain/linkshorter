@@ -22,22 +22,22 @@ Follow these steps to set up and run the project:
 ```bash
 git clone https://github.com/skhossain/linkshorter.git
 cd linkshorter
-
+```
 ### 2. Install Dependencies
 Install PHP dependencies:
 
 ```bash
 composer install
-
+```
 Install Node.js dependencies:
 ```bash
 npm install
-
+```
 ### 3. Configure Environment Variables
 Copy the .env.example file to .env:
 ```bash
 cp .env.example .env
-
+```
 ## Update the .env file with your local environment settings:
 Database credentials (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
 Other necessary configurations
@@ -45,20 +45,22 @@ Other necessary configurations
 ### 4. Generate Application Key
 ```bash
 php artisan key:generate
+```
 
 ### 5. Set Up the Database
 Create a database for the project.
 Run the migrations to set up database tables:
 ```bash
 php artisan migrate
+```
 
 ### 6. Run the Application
 Start the Laravel development server:
 ```bash
 php artisan serve
-
-## Compile front-end assets:
+```
+Compile front-end assets:
 ```bash
 npm run dev
-
-## Access the application at http://localhost:8000.
+```
+Access the application at http://localhost:8000.
